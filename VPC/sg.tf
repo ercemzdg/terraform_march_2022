@@ -1,7 +1,7 @@
 resource "aws_security_group" "my_sg" {
   name        = "SecurityGroupvpc"
   description = "This is a vpc security group"
-  vpc_id      = ""
+  vpc_id      = "var.aws_vpc_task.vpc"
 }
 
 resource "aws_security_group_rule" "ingress_ssh" {
@@ -10,7 +10,6 @@ resource "aws_security_group_rule" "ingress_ssh" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]               
-  security_group_id = aws_security_group.my_sg.id 
 }
 
 
@@ -20,6 +19,5 @@ resource "aws_security_group_rule" "egress" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.my_sg.id
 
 }
