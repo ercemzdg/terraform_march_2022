@@ -1,15 +1,15 @@
 
-   
+
 data "aws_ami" "amazon_linux_2" {
-  most_recent      = true
-  owners           = ["amazon"]
+  most_recent = true
+  owners      = ["amazon"]
 
   filter {
     name   = "name"
     values = ["amzn2-ami-kernel-5.10-hvm-2.0*"]
   }
   filter {
-    name = "architecture"
+    name   = "architecture"
     values = ["x86_64"]
   }
 }
@@ -18,3 +18,5 @@ data "aws_ami" "amazon_linux_2" {
 // data.aws_ami.amazon_linux_2.id = Terraform thinks it is data source
 
 # Fetch the data from an existing resource, data can be any attribute that resource
+# You cannot pass or use any variables for Backend Configuration.
+# we use Terraform Lock = DynamoDB Table.
