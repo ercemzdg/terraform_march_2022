@@ -1,24 +1,28 @@
 resource "aws_vpc" "task_vpc" {
-    cidr_block = "10.0.0.0/16"
-    tags = {
-      Name = "terraformvpc"
-    }
-  
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "terraformvpc"
+  }
+
 }
 resource "aws_subnet" "public" {
-    vpc_id = aws_vpc.task_vpc.id
-    cidr_block = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
-    tags = {
-        Name = "public_subnet"
-    }
+  vpc_id            = aws_vpc.task_vpc.id
+  count             = length(var.public_subnets_cidr)
+  cidr_block        = element(var.public_subnets_cidr, count.index)
+  availability_zone = element(var.az_subnets, count.index)
+  tags = {
+    Name = element(var.additional_tags, count.index)
+  }
 
 
 }
 resource "aws_subnet" "private" {
-    vpc_id = aws_vpc.task_vpc.id
-    cidr_block = ["10.0.11.0/24", "10.0.12.0/24", "10.0.13.0/24"]
-    tags = {
-        Name = "private_subnet"
-    }
-  
+  vpc_id            = aws_vpc.task_vpc.id
+  count             = length(var.private_subnets_cidr)
+  cidr_block        = element(var.private_subnets_cidr, count.index)
+  availability_zone = element(var.az_subnets, count.index)
+  tags = {
+    Name = element(var.additional_tags, count.index)
+  }
+
 }
