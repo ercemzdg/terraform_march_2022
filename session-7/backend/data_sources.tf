@@ -9,4 +9,7 @@ data "terraform_remote_state" "backend" {
     region = "us-east-1"
   }
 
+}           
+output "password" {
+    value = data.terraform_remote_state.backend.outputs.db_password
 }
