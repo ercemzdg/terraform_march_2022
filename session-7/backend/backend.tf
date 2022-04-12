@@ -3,7 +3,7 @@ terraform {
     bucket = "s3-terraform-session"
     key    = "session-7/backend/terraform.tfstate"
     region = "us-east-1"
-    # dynamodb_table = "terraform-march-2020-lock"
+    dynamodb_table = "terraform-march-2020-lock"
   }
 }
 
