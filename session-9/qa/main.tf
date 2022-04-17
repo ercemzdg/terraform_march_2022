@@ -6,3 +6,7 @@ module "ec2" {
   env = "qa"
   project = "app-1"
 }
+module "s3" {
+  source = "../../module/s3"
+  env = "qa"
+}

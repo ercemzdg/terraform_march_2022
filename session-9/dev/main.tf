@@ -6,3 +6,7 @@ module "ec2" {
   env = "dev"
   project = "app-1"
 }
+module "s3" {
+  source = "../../module/s3"
+  env = "dev"
+}
