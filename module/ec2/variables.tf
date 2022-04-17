@@ -16,3 +16,7 @@ variable "env"  {
     description = "This represent the environment"
   
 }
+variable "project" {
+  type = string
+  description = "This is for tag"
+}
