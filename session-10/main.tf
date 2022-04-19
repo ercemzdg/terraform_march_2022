@@ -20,6 +20,6 @@ module "vpc" {
   }
 }
 module "s3" {
-  source = "github.com/aKumoSolutions/terraform-march-2022/tree/main/modules/s3"
+  source = "github.com/ercemzdg/terraform_march_2022/module/s3"
   env = "dev"
 }
